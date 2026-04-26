@@ -1,3 +1,4 @@
+import 'package:computer_app_provider/app/core/constants/app_colors.dart';
 import 'package:computer_app_provider/app/modules/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -142,9 +143,18 @@ class CartScreen extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(15),
-          child: Text(
-            "Total : \$${cartProvider.total().toStringAsFixed(2)}",
-            style: TextStyle(fontSize: 25),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Total : \$${cartProvider.total().toStringAsFixed(2)}",
+                style: TextStyle(
+                  fontSize: 25,
+                  color: AppColors.button,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
         ),
       ),
