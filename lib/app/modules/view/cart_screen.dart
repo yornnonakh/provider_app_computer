@@ -129,7 +129,6 @@ class CartScreen extends StatelessWidget {
                 );
               },
             ),
-
       bottomNavigationBar: Container(
         width: double.infinity,
         height: 250,
