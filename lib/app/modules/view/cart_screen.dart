@@ -135,24 +135,36 @@ class CartScreen extends StatelessWidget {
         height: 250,
         decoration: BoxDecoration(
           // ignore: deprecated_member_use
-          color: Colors.amber.withOpacity(0.6),
+          color: Theme.of(context).primaryColor.withOpacity(0.3),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(25),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Total : \$${cartProvider.total().toStringAsFixed(2)}",
-                style: TextStyle(
-                  fontSize: 25,
-                  color: AppColors.button,
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Total",
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: AppColors.button,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '${cartProvider.total().toStringAsFixed(2)}\$',
+                    style: TextStyle(
+                      color: AppColors.button,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

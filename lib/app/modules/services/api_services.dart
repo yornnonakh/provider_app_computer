@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:computer_app_provider/app/modules/model/products.dart';
 import 'package:http/http.dart' as http;
+
 class ApiService {
   
   static  final url = "https://seangleangsim006-cmd.github.io/fake-json/";

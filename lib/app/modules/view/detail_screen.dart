@@ -59,26 +59,20 @@ class ProductDetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-
-                const SizedBox(height: 40),
-
+                SizedBox(height: 40),
                 // Product Image
                 Image.network(pro.image, height: 240, fit: BoxFit.contain),
-
-                const SizedBox(height: 30),
-
+                SizedBox(height: 30),
                 // Dots
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [dot(false), dot(false), dot(true), dot(false)],
                 ),
-
-                const SizedBox(height: 28),
-
+                SizedBox(height: 28),
                 // Details
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 22),
+                    padding: EdgeInsets.symmetric(horizontal: 22),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -104,14 +98,12 @@ class ProductDetailScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-
-                        const SizedBox(height: 12),
-
+                        SizedBox(height: 12),
                         // Rating
                         Row(
                           children: [
                             Container(
-                              padding: const EdgeInsets.symmetric(
+                              padding: EdgeInsets.symmetric(
                                 horizontal: 8,
                                 vertical: 4,
                               ),
@@ -119,7 +111,7 @@ class ProductDetailScreen extends StatelessWidget {
                                 border: Border.all(color: Colors.grey.shade200),
                               ),
                               child: Row(
-                                children: const [
+                                children: [
                                   Icon(
                                     Icons.star,
                                     color: Colors.amber,
@@ -135,8 +127,8 @@ class ProductDetailScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            const SizedBox(width: 12),
-                            const Text(
+                            SizedBox(width: 12),
+                            Text(
                               "125+ Review",
                               style: TextStyle(
                                 color: Color(0xFF77778A),
@@ -145,9 +137,7 @@ class ProductDetailScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-
-                        const SizedBox(height: 18),
-
+                        SizedBox(height: 18),
                         featureText(
                           "Experience a ${pro.specs.display} display with Low Blue Light Technology, Featuring Alienware Cryo-Tech™ cooling and ${pro.specs.cpu}",
                         ),
@@ -155,9 +145,7 @@ class ProductDetailScreen extends StatelessWidget {
                         featureText("RAM : ${pro.specs.ram}"),
                         featureText("Storage : ${pro.specs.storage}"),
                         featureText("GPU : ${pro.specs.gpu}"),
-
-                        const Spacer(),
-
+                        Spacer(),
                         // Buy Button
                         SizedBox(
                           width: double.infinity,
@@ -197,7 +185,7 @@ class ProductDetailScreen extends StatelessWidget {
                               ),
                               elevation: 0,
                             ),
-                            child: const Text(
+                            child: Text(
                               "ADD TO CART",
                               style: TextStyle(
                                 fontSize: 16,
@@ -207,8 +195,7 @@ class ProductDetailScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-
-                        const SizedBox(height: 18),
+                        SizedBox(height: 18),
                       ],
                     ),
                   ),

@@ -89,10 +89,10 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Product",
+                          "The Popular",
                           style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         TextButton(onPressed: () {}, child: Text("View All")),
