@@ -9,6 +9,16 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartProvider = context.watch<CartProvider>();
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Cart Item',
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+          ),
+        ),
+      ),
       body: (cartProvider.cartItem.isEmpty)
           ? Center(child: Text("Cart Empty!"))
           : ListView.builder(
