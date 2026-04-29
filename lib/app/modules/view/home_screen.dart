@@ -1,3 +1,4 @@
+import 'package:computer_app_provider/app/core/constants/app_colors.dart';
 import 'package:computer_app_provider/app/modules/services/api_services.dart';
 import 'package:computer_app_provider/app/modules/view/detail_screen.dart';
 import 'package:flutter/material.dart';
@@ -93,6 +94,7 @@ class HomeScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                         TextButton(onPressed: () {}, child: Text("View All")),

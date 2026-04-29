@@ -24,3 +24,37 @@ class AppColors {
   static const Color darkBackground = Color(0xFF121212);
   static const Color darkCard = Color(0xFF1E1E1E);
 }
+
+class AppGradients {
+  static const LinearGradient blue = LinearGradient(
+    colors: [Color(0xFF4facfe), Color(0xFF00f2fe)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient pink = LinearGradient(
+    colors: [Color(0xFFff9a9e), Color(0xFFfad0c4)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient sunset = LinearGradient(
+    colors: [Color(0xFFf83600), Color(0xFFf9d423)],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
+
+  static const LinearGradient dark = LinearGradient(
+    colors: [Color.fromARGB(255, 59, 69, 90), Color.fromARGB(255, 52, 52, 52)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient purple = LinearGradient(
+    colors: [Color(0xFFa18cd1), Color(0xFFfbc2eb)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+  
+  
+}
