@@ -7,7 +7,9 @@ class FavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile Screen'),
+        title: Text('Profile Screen', style: TextStyle(
+          color: Colors.white
+        ),),
       ),
     );
   }

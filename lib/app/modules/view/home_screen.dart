@@ -142,6 +142,15 @@ class HomeScreen extends StatelessWidget {
                                       product.image,
                                       width: double.infinity,
                                       height: 120,
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                            return Center(
+                                              child: Icon(
+                                                Icons.broken_image,
+                                                size: 120,
+                                              ),
+                                            );
+                                          },
                                     ),
                                   ),
                                   SizedBox(height: 5),
