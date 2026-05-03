@@ -1,4 +1,3 @@
-
 import 'package:computer_app_provider/app/core/constants/app_colors.dart';
 import 'package:computer_app_provider/app/modules/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
@@ -10,39 +9,36 @@ class OrderSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Color(0xFFF7F8FA),
+      backgroundColor: Color(0xFFF7F8FA),
       body: Center(
         child: Padding(
-          padding:  EdgeInsets.all(20),
+          padding: EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               /// ✅ ICON
               Container(
-                width: 100,
-                height: 100,
+                width: 200,
+                height: 200,
                 decoration: BoxDecoration(
                   color: Colors.green.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
-                child:  Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                  size: 60,
-                ),
+                child: Icon(Icons.check_circle, color: Colors.green, size: 150),
               ),
-               SizedBox(height: 20),
-               Text(
+              SizedBox(height: 20),
+              Text(
                 "Order Confirmed!",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-               SizedBox(height: 10),
-               Text(
+              SizedBox(height: 10),
+              Text(
                 "Your order has been placed successfully.\nWe will deliver it soon 🚚",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey),
               ),
-               SizedBox(height: 30),
+              SizedBox(height: 30),
+
               /// BACK HOME BUTTON
               SizedBox(
                 width: double.infinity,
@@ -62,8 +58,10 @@ class OrderSuccessScreen extends StatelessWidget {
                   ),
                   child: Text(
                     "Confirm Order",
-                    style: TextStyle(fontWeight: FontWeight.w600,
-                    color: AppColors.scaffold),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.scaffold,
+                    ),
                   ),
                 ),
               ),
