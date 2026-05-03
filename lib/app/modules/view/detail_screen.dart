@@ -14,7 +14,6 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF7F8FA),
 
-      /// 🔥 APP BAR (FLOATING STYLE)
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -28,7 +27,6 @@ class ProductDetailScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          /// 🖼 IMAGE SECTION (MODERN HERO)
           Expanded(
             flex: 4,
             child: Center(
@@ -39,7 +37,6 @@ class ProductDetailScreen extends StatelessWidget {
             ),
           ),
 
-          /// 📦 CONTENT CARD
           Expanded(
             flex: 6,
             child: Container(
@@ -59,7 +56,6 @@ class ProductDetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// NAME + PRICE
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -94,7 +90,6 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
 
-                  /// RATING
                   Row(
                     children: const [
                       Icon(Icons.star, color: Colors.amber, size: 18),
@@ -109,21 +104,18 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
 
-                  /// DESCRIPTION
                   Text(
                     pro.description,
                     style: const TextStyle(color: Colors.grey, height: 1.5),
                   ),
                   const SizedBox(height: 18),
 
-                  /// TITLE
                   const Text(
                     "Specifications",
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                   ),
                   const SizedBox(height: 10),
 
-                  /// FEATURES LIST
                   Expanded(
                     child: ListView(
                       children: [
@@ -142,7 +134,6 @@ class ProductDetailScreen extends StatelessWidget {
         ],
       ),
 
-      /// 🔥 MODERN BOTTOM BUTTON
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -195,7 +186,6 @@ class ProductDetailScreen extends StatelessWidget {
                           const Icon(Icons.check_circle, color: Colors.white),
                           const SizedBox(width: 12),
 
-                          /// TEXT
                           Expanded(
                             child: Text(
                               "${pro.name} added successfully",
@@ -206,7 +196,6 @@ class ProductDetailScreen extends StatelessWidget {
                             ),
                           ),
 
-                          /// CLOSE ICON (optional UI feel)
                           const Icon(
                             Icons.close,
                             color: Colors.white,
@@ -238,7 +227,6 @@ class ProductDetailScreen extends StatelessWidget {
     );
   }
 
-  /// 🔹 ICON BUTTON
   Widget _iconBtn(BuildContext context, IconData icon, VoidCallback onTap) {
     return Padding(
       padding: const EdgeInsets.all(8),
@@ -261,7 +249,6 @@ class ProductDetailScreen extends StatelessWidget {
     );
   }
 
-  /// 🔹 FEATURE ROW
   Widget _feature(String title, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),

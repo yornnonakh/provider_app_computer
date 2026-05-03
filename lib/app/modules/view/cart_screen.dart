@@ -56,7 +56,6 @@ class CartScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      /// IMAGE
                       ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: SizedBox(
@@ -68,7 +67,6 @@ class CartScreen extends StatelessWidget {
 
                       const SizedBox(width: 12),
 
-                      /// INFO
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +91,6 @@ class CartScreen extends StatelessWidget {
                         ),
                       ),
 
-                      /// QUANTITY
                       Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 8,
@@ -136,7 +133,6 @@ class CartScreen extends StatelessWidget {
               },
             ),
 
-      /// 🔻 MODERN BOTTOM SECTION
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -150,7 +146,6 @@ class CartScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              /// 🔻 PROMO
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 decoration: BoxDecoration(
@@ -181,14 +176,12 @@ class CartScreen extends StatelessWidget {
 
               const SizedBox(height: 15),
 
-              /// 🔻 PRICE DETAILS
               _priceRow("Subtotal", subtotal),
               _priceRow("Delivery Fee", deliveryFee),
               _priceRow("Discount", -discount),
 
               const Divider(height: 20),
 
-              /// 🔻 TOTAL
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -209,7 +202,6 @@ class CartScreen extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              /// 🔻 BUTTON
               SizedBox(
                 width: double.infinity,
                 height: 55,
@@ -242,7 +234,6 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  /// 🔹 QTY BUTTON
   Widget _qtyButton({
     required IconData icon,
     required VoidCallback onTap,
@@ -267,7 +258,6 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  /// 🔹 PRICE ROW
   Widget _priceRow(String title, double amount) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),

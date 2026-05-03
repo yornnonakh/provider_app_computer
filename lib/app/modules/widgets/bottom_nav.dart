@@ -33,10 +33,8 @@ class _BottomNavState extends State<BottomNav> {
     return Scaffold(
       backgroundColor: const Color(0xFFF7F8FA),
 
-      /// 🔻 SCREEN
       body: screens[selectedIndex],
 
-      /// 🔻 MODERN FLOATING NAVBAR
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16),
         child: Container(
@@ -62,7 +60,6 @@ class _BottomNavState extends State<BottomNav> {
     );
   }
 
-  /// 🔹 NAV ITEM (ANIMATED)
   Widget _navItem(IconData icon, int index) {
     final isSelected = selectedIndex == index;
 
@@ -88,7 +85,6 @@ class _BottomNavState extends State<BottomNav> {
               color: isSelected ? Theme.of(context).primaryColor : Colors.grey,
             ),
 
-            /// 🔥 Show label only when selected (modern UX)
             if (isSelected) ...[
               const SizedBox(width: 6),
               Text(
@@ -105,7 +101,6 @@ class _BottomNavState extends State<BottomNav> {
     );
   }
 
-  /// 🔹 LABEL HELPER
   String _label(int index) {
     switch (index) {
       case 0:

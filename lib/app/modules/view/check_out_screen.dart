@@ -33,7 +33,6 @@ class CheckoutScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// 🔻 ADDRESS
             Text(
               "Delivery Address",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
@@ -104,7 +103,6 @@ class CheckoutScreen extends StatelessWidget {
 
             SizedBox(height: 20),
 
-            /// 🔻 PAYMENT
             Text(
               "Payment Method",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
@@ -178,7 +176,6 @@ class CheckoutScreen extends StatelessWidget {
         ),
       ),
 
-      /// 🔻 BOTTOM BAR
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -192,7 +189,6 @@ class CheckoutScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              /// TOTAL
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -208,7 +204,6 @@ class CheckoutScreen extends StatelessWidget {
               ),
               SizedBox(height: 16),
 
-              /// BUTTON
               SizedBox(
                 width: double.infinity,
                 height: 55,
@@ -227,8 +222,10 @@ class CheckoutScreen extends StatelessWidget {
                   ),
                   child: Text(
                     "Confirm Order",
-                    style: TextStyle(fontWeight: FontWeight.w600,
-                    color: AppColors.scaffold),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.scaffold,
+                    ),
                   ),
                 ),
               ),

@@ -16,7 +16,6 @@ class OrderSuccessScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              /// ✅ ICON
               Container(
                 width: 200,
                 height: 200,
@@ -39,7 +38,6 @@ class OrderSuccessScreen extends StatelessWidget {
               ),
               SizedBox(height: 30),
 
-              /// BACK HOME BUTTON
               SizedBox(
                 width: double.infinity,
                 height: 55,

@@ -16,13 +16,11 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF7F8FA),
 
-      /// 🔥 APP BAR
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: _buildSearchBar(),
         actions: [
-          /// ❤️ FAVORITE ICON WITH LIVE BADGE
           Consumer<FavoriteProvider>(
             builder: (context, fav, _) {
               return GestureDetector(
@@ -53,7 +51,6 @@ class HomeScreen extends StatelessWidget {
                         child: Icon(Icons.favorite_border, color: Colors.black),
                       ),
 
-                      /// 🔴 BADGE COUNT
                       if (fav.favorites.isNotEmpty)
                         Positioned(
                           right: 6,
@@ -82,7 +79,6 @@ class HomeScreen extends StatelessWidget {
             },
           ),
 
-          /// 👤 PROFILE ICON
           Container(
             margin: EdgeInsets.only(right: 12),
             width: 45,
@@ -122,7 +118,6 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Column(
               children: [
-                /// 🔻 BANNER
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: ImageSlideshow(
@@ -144,7 +139,6 @@ class HomeScreen extends StatelessWidget {
 
                 SizedBox(height: 20),
 
-                /// HEADER
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -161,7 +155,6 @@ class HomeScreen extends StatelessWidget {
 
                 SizedBox(height: 10),
 
-                /// GRID
                 GridView.builder(
                   itemCount: products.length,
                   shrinkWrap: true,
@@ -191,7 +184,6 @@ class HomeScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          /// 🔥 IMAGE SECTION
                           Stack(
                             children: [
                               ClipRRect(
@@ -204,14 +196,16 @@ class HomeScreen extends StatelessWidget {
                                   width: double.infinity,
                                   errorBuilder: (context, error, stackTrace) {
                                     return Center(
-                                      child: Icon(Icons.broken_image,size: 140,),
+                                      child: Icon(
+                                        Icons.broken_image,
+                                        size: 140,
+                                      ),
                                     );
                                   },
                                   // fit: BoxFit.cover,
                                 ),
                               ),
 
-                              /// ❤️ FAVORITE BUTTON (FLOATING)
                               Positioned(
                                 right: 10,
                                 top: 10,
@@ -254,13 +248,11 @@ class HomeScreen extends StatelessWidget {
                             ],
                           ),
 
-                          /// 📦 CONTENT
                           Padding(
                             padding: EdgeInsets.all(12),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                /// NAME
                                 Text(
                                   product.name,
                                   maxLines: 1,
@@ -273,7 +265,6 @@ class HomeScreen extends StatelessWidget {
 
                                 SizedBox(height: 6),
 
-                                /// PRICE BADGE
                                 Container(
                                   padding: EdgeInsets.symmetric(
                                     horizontal: 10,
@@ -293,7 +284,6 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10),
 
-                                /// ADD BUTTON
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -355,7 +345,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  /// SEARCH BAR
   Widget _buildSearchBar() {
     return Container(
       height: 45,
