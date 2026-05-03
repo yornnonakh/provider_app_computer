@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
+
   @override
   State<BottomNav> createState() => _BottomNavState();
 }
@@ -14,44 +15,109 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int selectedIndex = 0;
 
-  List<Widget> screen = [
-    HomeScreen(),
-    CartScreen(),
-    FavoriteScreen(),
-    ProfileScreen(),
+  final List<Widget> screens = [
+    const HomeScreen(),
+    const CartScreen(),
+    const FavoriteScreen(),
+    const ProfileScreen(),
   ];
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     ApiService.getProduct();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screen[selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex,
-        onTap: (value) {
-          setState(() {
-            selectedIndex = value;
-          });
-        },
-        type: BottomNavigationBarType.fixed,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-        selectedItemColor: Theme.of(context).primaryColor,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag),
-            label: "Cart",
+      backgroundColor: const Color(0xFFF7F8FA),
+
+      /// 🔻 SCREEN
+      body: screens[selectedIndex],
+
+      /// 🔻 MODERN FLOATING NAVBAR
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Container(
+          height: 70,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(25),
+            boxShadow: [
+              BoxShadow(color: Colors.black.withOpacity(0.08), blurRadius: 20),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: "Favorite",
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _navItem(Icons.home, 0),
+              _navItem(Icons.shopping_bag, 1),
+              _navItem(Icons.favorite, 2),
+              _navItem(Icons.person, 3),
+            ],
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
+        ),
       ),
     );
+  }
+
+  /// 🔹 NAV ITEM (ANIMATED)
+  Widget _navItem(IconData icon, int index) {
+    final isSelected = selectedIndex == index;
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedIndex = index;
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? Theme.of(context).primaryColor.withOpacity(0.15)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: isSelected ? Theme.of(context).primaryColor : Colors.grey,
+            ),
+
+            /// 🔥 Show label only when selected (modern UX)
+            if (isSelected) ...[
+              const SizedBox(width: 6),
+              Text(
+                _label(index),
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// 🔹 LABEL HELPER
+  String _label(int index) {
+    switch (index) {
+      case 0:
+        return "Home";
+      case 1:
+        return "Cart";
+      case 2:
+        return "Favorite";
+      case 3:
+        return "Profile";
+      default:
+        return "";
+    }
   }
 }

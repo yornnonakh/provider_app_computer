@@ -1,212 +1,373 @@
+import 'package:computer_app_provider/app/modules/providers/favorite_porvider.dart';
 import 'package:computer_app_provider/app/modules/services/api_services.dart';
 import 'package:computer_app_provider/app/modules/view/detail_screen.dart';
+import 'package:computer_app_provider/app/modules/view/favorite_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Container(
-          width: double.infinity,
-          height: 45,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-            boxShadow: [
-              // ignore: deprecated_member_use
-              BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 2),
-            ],
-          ),
-          child: TextField(
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: "Saerch",
-              prefixIcon: Icon(Icons.search),
-            ),
-          ),
-        ),
-        actions: [
-          Container(
-            width: 45,
-            height: 45,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                // ignore: deprecated_member_use
-                BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 2),
-              ],
-            ),
-            child: Icon(Icons.notifications_outlined),
-          ),
-          SizedBox(width: 12),
-        ],
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: FutureBuilder(
-            future: ApiService.getProduct(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
-              }
-              if (snapshot.hasError) {
-                return Center(child: Text(snapshot.error.toString()));
-              }
-              if (!snapshot.hasData) {
-                return Center(child: Text("No data"));
-              }
-              return Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  children: [
-                    ClipRRect(
-                      // borderRadius: BorderRadius.circular(20),
-                      child: ImageSlideshow(
-                        width: double.infinity,
-                        height: 200,
-                        autoPlayInterval: 3000,
-                        isLoop: true,
-                        children: [
-                          Image.network(
-                            "https://i.pinimg.com/736x/bc/a5/96/bca596a83d166c064e76ea7edfffbf00.jpg",
-                          ),
-                          Image.network(
-                            "https://i.pinimg.com/1200x/fa/4e/e5/fa4ee5eee769906bc2e374f103d59476.jpg",
-                          ),
-                          Image.network(
-                            "https://i.pinimg.com/1200x/8c/b7/c0/8cb7c0a158a9ddb961d8369d62c8f647.jpg",
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "The Popular",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                        TextButton(onPressed: () {}, child: Text("View All")),
-                      ],
-                    ),
-                    GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 20,
-                        crossAxisSpacing: 20,
-                        childAspectRatio: 8 / 10,
-                      ),
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
-                        final product = snapshot.data![index];
-                        return InkWell(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ProductDetailScreen(pro: product),
-                            ),
-                          ),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                              boxShadow: [
-                                BoxShadow(
-                                  // ignore: deprecated_member_use
-                                  color: Colors.black.withOpacity(0.2),
-                                  blurRadius: 4,
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Image.network(
-                                      product.image,
-                                      width: double.infinity,
-                                      height: 120,
-                                      errorBuilder:
-                                          (context, error, stackTrace) {
-                                            return Center(
-                                              child: Icon(
-                                                Icons.broken_image,
-                                                size: 120,
-                                              ),
-                                            );
-                                          },
-                                    ),
-                                  ),
-                                  SizedBox(height: 5),
-                                  Text(
-                                    product.name,
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "\$${product.price}",
-                                        style: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
+    final favoriteProvider = context.read<FavoriteProvider>();
 
-                                      Container(
-                                        width: 25,
-                                        height: 25,
-                                        decoration: BoxDecoration(
-                                          color: Theme.of(context).primaryColor,
-                                          borderRadius: BorderRadius.circular(
-                                            8,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            "+",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+    return Scaffold(
+      backgroundColor: Color(0xFFF7F8FA),
+
+      /// 🔥 APP BAR
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: _buildSearchBar(),
+        actions: [
+          /// ❤️ FAVORITE ICON WITH LIVE BADGE
+          Consumer<FavoriteProvider>(
+            builder: (context, fav, _) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => FavoriteScreen()),
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.only(right: 8),
+                  width: 45,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(14),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        blurRadius: 10,
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Center(
+                        child: Icon(Icons.favorite_border, color: Colors.black),
+                      ),
+
+                      /// 🔴 BADGE COUNT
+                      if (fav.favorites.isNotEmpty)
+                        Positioned(
+                          right: 6,
+                          top: 6,
+                          child: AnimatedContainer(
+                            duration: Duration(milliseconds: 200),
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Text(
+                              fav.favorites.length.toString(),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                        );
-                      },
-                    ),
-                  ],
+                        ),
+                    ],
+                  ),
                 ),
               );
             },
           ),
+
+          /// 👤 PROFILE ICON
+          Container(
+            margin: EdgeInsets.only(right: 12),
+            width: 45,
+            height: 45,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(14),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 10,
+                ),
+              ],
+            ),
+            child: Icon(Icons.person),
+          ),
+        ],
+      ),
+      body: FutureBuilder(
+        future: ApiService.getProduct(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          if (snapshot.hasError) {
+            return Center(child: Text(snapshot.error.toString()));
+          }
+
+          if (!snapshot.hasData || snapshot.data == null) {
+            return Center(child: Text("No data"));
+          }
+
+          final products = snapshot.data!;
+
+          return SingleChildScrollView(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                /// 🔻 BANNER
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: ImageSlideshow(
+                    height: 180,
+                    autoPlayInterval: 3000,
+                    isLoop: true,
+                    children: [
+                      Image.network(
+                        "https://i.pinimg.com/736x/bc/a5/96/bca596a83d166c064e76ea7edfffbf00.jpg",
+                        fit: BoxFit.cover,
+                      ),
+                      Image.network(
+                        "https://i.pinimg.com/1200x/fa/4e/e5/fa4ee5eee769906bc2e374f103d59476.jpg",
+                        fit: BoxFit.cover,
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(height: 20),
+
+                /// HEADER
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Popular Products",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text("View All"),
+                  ],
+                ),
+
+                SizedBox(height: 10),
+
+                /// GRID
+                GridView.builder(
+                  itemCount: products.length,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.72,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                  ),
+                  itemBuilder: (context, index) {
+                    final product = products[index];
+                    favoriteProvider.isFavorite(product);
+
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(22),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.06),
+                            blurRadius: 20,
+                            offset: Offset(0, 10),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          /// 🔥 IMAGE SECTION
+                          Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(22),
+                                ),
+                                child: Image.network(
+                                  product.image,
+                                  height: 140,
+                                  width: double.infinity,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Center(
+                                      child: Icon(Icons.broken_image,size: 140,),
+                                    );
+                                  },
+                                  // fit: BoxFit.cover,
+                                ),
+                              ),
+
+                              /// ❤️ FAVORITE BUTTON (FLOATING)
+                              Positioned(
+                                right: 10,
+                                top: 10,
+                                child: Consumer<FavoriteProvider>(
+                                  builder: (context, fav, _) {
+                                    final isFav = fav.isFavorite(product);
+
+                                    return GestureDetector(
+                                      onTap: () => fav.toggleFavorite(product),
+                                      child: AnimatedContainer(
+                                        duration: Duration(milliseconds: 200),
+                                        width: 40,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(0.95),
+                                          shape: BoxShape.circle,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black.withOpacity(
+                                                0.1,
+                                              ),
+                                              blurRadius: 10,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Icon(
+                                          isFav
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                          color: isFav
+                                              ? Colors.red
+                                              : Colors.black54,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          /// 📦 CONTENT
+                          Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                /// NAME
+                                Text(
+                                  product.name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+
+                                SizedBox(height: 6),
+
+                                /// PRICE BADGE
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 5,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue.withOpacity(0.08),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Text(
+                                    "\$${product.price}",
+                                    style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+
+                                /// ADD BUTTON
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "In stock",
+                                      style: TextStyle(
+                                        color: Colors.grey.shade500,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) =>
+                                              ProductDetailScreen(pro: product),
+                                        ),
+                                      ),
+                                      child: Container(
+                                        width: 34,
+                                        height: 34,
+                                        decoration: BoxDecoration(
+                                          color: Theme.of(context).primaryColor,
+                                          borderRadius: BorderRadius.circular(
+                                            10,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Theme.of(
+                                                context,
+                                              ).primaryColor.withOpacity(0.3),
+                                              blurRadius: 10,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                          size: 18,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  /// SEARCH BAR
+  Widget _buildSearchBar() {
+    return Container(
+      height: 45,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: "Search products...",
+          border: InputBorder.none,
+          prefixIcon: Icon(Icons.search),
         ),
       ),
     );
