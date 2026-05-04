@@ -31,7 +31,15 @@ class ProductInfo extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("In stock", style: TextStyle(fontSize: 12)),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.amber.withOpacity(0.2)
+                ),
+                child:  Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text("In stock", style: TextStyle(fontSize: 12)),
+                )),
               AddButton(product: product),
             ],
           ),

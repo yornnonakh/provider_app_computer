@@ -19,7 +19,7 @@ class CheckoutScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF7F8FA),
       appBar: AppBar(
-        title: Text("Checkout"),
+        title: Text("Checkout", style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         // elevation: 0,
         backgroundColor: Colors.transparent,
@@ -32,7 +32,7 @@ class CheckoutScreen extends StatelessWidget {
           children: [
             Text(
               "Delivery Address",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 12),
 
@@ -77,7 +77,10 @@ class CheckoutScreen extends StatelessWidget {
                             children: [
                               Text(
                                 item.addressName,
-                                style: TextStyle(fontWeight: FontWeight.w600),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               SizedBox(height: 4),
                               Text(
@@ -98,7 +101,7 @@ class CheckoutScreen extends StatelessWidget {
             SizedBox(height: 20),
             Text(
               "Payment Method",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 12),
             Column(
@@ -144,7 +147,7 @@ class CheckoutScreen extends StatelessWidget {
                             item.name,
                             style: TextStyle(
                               fontSize: 16,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -184,8 +187,12 @@ class CheckoutScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Total",
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    "Total :",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     "\$${cartProvider.total().toStringAsFixed(2)}",
@@ -214,7 +221,8 @@ class CheckoutScreen extends StatelessWidget {
                   child: Text(
                     "Confirm Order",
                     style: TextStyle(
-                      fontWeight: FontWeight.w600,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
                       color: AppColors.scaffold,
                     ),
                   ),

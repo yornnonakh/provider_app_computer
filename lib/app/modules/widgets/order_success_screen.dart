@@ -21,7 +21,7 @@ class OrderSuccessScreen extends StatelessWidget {
                 height: 200,
                 decoration: BoxDecoration(
                   // ignore: deprecated_member_use
-                  color: Colors.green.withOpacity(0.1),
+                  color: Theme.of(context).primaryColor.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(Icons.check_circle, color: Colors.green, size: 150),

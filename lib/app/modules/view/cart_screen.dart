@@ -20,7 +20,13 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF7F8FA),
       appBar: AppBar(
-        title: const Text("My Cart"),
+        title: Text(
+          "My Cart",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -71,11 +77,9 @@ class CartScreen extends StatelessWidget {
                               item.name,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style:  TextStyle(
-                                fontWeight: FontWeight.w600,
-                              ),
+                              style: TextStyle(fontWeight: FontWeight.w600),
                             ),
-                             SizedBox(height: 6),
+                            SizedBox(height: 6),
                             Text(
                               "\$${item.price}",
                               style: TextStyle(
@@ -87,32 +91,30 @@ class CartScreen extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        padding:  EdgeInsets.symmetric(
+                        padding: EdgeInsets.symmetric(
                           horizontal: 8,
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color:  Color(0xFFF1F3F6),
+                          color: Theme.of(
+                            context,
+                          ).primaryColor.withOpacity(0.1),
                         ),
                         child: Row(
                           children: [
-                            _qtyButton(
+                            qtyButton(
                               icon: Icons.remove,
                               onTap: () => cartProvider.decrement(index),
                             ),
                             Padding(
-                              padding:  EdgeInsets.symmetric(
-                                horizontal: 10,
-                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 10),
                               child: Text(
                                 item.stock.toString(),
-                                style:  TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                ),
+                                style: TextStyle(fontWeight: FontWeight.w600),
                               ),
                             ),
-                            _qtyButton(
+                            qtyButton(
                               icon: Icons.add,
                               onTap: () => cartProvider.increment(index),
                               isPrimary: true,
@@ -126,10 +128,10 @@ class CartScreen extends StatelessWidget {
               },
             ),
       bottomNavigationBar: Container(
-        padding:  EdgeInsets.all(16),
+        padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius:  BorderRadius.vertical(top: Radius.circular(25)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
           boxShadow: [
             BoxShadow(color: Colors.black.withOpacity(0.08), blurRadius: 15),
           ],
@@ -139,16 +141,16 @@ class CartScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding:  EdgeInsets.symmetric(horizontal: 12),
+                padding: EdgeInsets.symmetric(horizontal: 12),
                 decoration: BoxDecoration(
-                  color:  Color(0xFFF1F3F6),
+                  color: Color(0xFFF1F3F6),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
                   children: [
-                     Icon(Icons.local_offer, size: 20),
-                     SizedBox(width: 8),
-                     Expanded(
+                    Icon(Icons.local_offer, size: 20),
+                    SizedBox(width: 8),
+                    Expanded(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: "Enter promo code",
@@ -160,20 +162,20 @@ class CartScreen extends StatelessWidget {
                       onPressed: () {
                         // TODO: Apply promo
                       },
-                      child:  Text("Apply"),
+                      child: Text("Apply"),
                     ),
                   ],
                 ),
               ),
-               SizedBox(height: 15),
+              SizedBox(height: 15),
               _priceRow("Subtotal", subtotal),
               _priceRow("Delivery Fee", deliveryFee),
               _priceRow("Discount", -discount),
-               Divider(height: 20),
+              Divider(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                   Text(
+                  Text(
                     "Total",
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                   ),
@@ -187,7 +189,7 @@ class CartScreen extends StatelessWidget {
                   ),
                 ],
               ),
-               SizedBox(height: 16),
+              SizedBox(height: 16),
               SizedBox(
                 width: double.infinity,
                 height: 55,
@@ -204,7 +206,7 @@ class CartScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(14),
                     ),
                   ),
-                  child:  Text(
+                  child: Text(
                     "Proceed to Checkout",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
@@ -219,7 +221,8 @@ class CartScreen extends StatelessWidget {
       ),
     );
   }
-  Widget _qtyButton({
+
+  Widget qtyButton({
     required IconData icon,
     required VoidCallback onTap,
     bool isPrimary = false,
@@ -231,27 +234,28 @@ class CartScreen extends StatelessWidget {
         width: 28,
         height: 28,
         decoration: BoxDecoration(
-          color: isPrimary ? Colors.blue : Colors.white,
+          color: isPrimary ? Colors.green.shade500 : Colors.red.shade800,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Icon(
           icon,
           size: 18,
-          color: isPrimary ? Colors.white : Colors.black,
+          color: isPrimary ? Colors.white : Colors.white,
         ),
       ),
     );
   }
+
   Widget _priceRow(String title, double amount) {
     return Padding(
-      padding:  EdgeInsets.symmetric(vertical: 4),
+      padding: EdgeInsets.symmetric(vertical: 4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style:  TextStyle(color: Colors.grey)),
+          Text(title, style: TextStyle(color: Colors.grey)),
           Text(
             "${amount >= 0 ? "" : "-"}\$${amount.abs().toStringAsFixed(2)}",
-            style:  TextStyle(fontWeight: FontWeight.w500),
+            style: TextStyle(fontWeight: FontWeight.w500),
           ),
         ],
       ),

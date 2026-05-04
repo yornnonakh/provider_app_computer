@@ -7,6 +7,6 @@ class Address {
   });
 }
 List<Address> address=[
-  Address(addressName: "Home Address", detailAddress: "182, Phnom Penh"),
+  Address(addressName: "Home Address", detailAddress: "299, Phnom Penh"),
    Address(addressName: "Office Address", detailAddress: "182, Phnom Penh")
 ];

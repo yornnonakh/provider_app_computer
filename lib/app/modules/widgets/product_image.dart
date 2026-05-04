@@ -15,7 +15,7 @@ class ProductImage extends StatelessWidget {
     return Stack(
       children: [
         ClipRRect(
-          borderRadius: const BorderRadius.vertical(
+          borderRadius:  BorderRadius.vertical(
             top: Radius.circular(22),
           ),
           child: Center(
@@ -23,9 +23,8 @@ class ProductImage extends StatelessWidget {
               product.image,
               height: 140,
               width: double.infinity,
-              fit: BoxFit.cover,
               errorBuilder: (_, _, _) =>
-                  const Icon(Icons.broken_image, size: 140),
+                 Icon(Icons.broken_image, size: 140),
             ),
           ),
         ),
@@ -35,7 +34,7 @@ class ProductImage extends StatelessWidget {
           child: GestureDetector(
             onTap: () => fav.toggleFavorite(product),
             child: CircleAvatar(
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
               child: Icon(
                 isFav ? Icons.favorite : Icons.favorite_border,
                 color: isFav ? Colors.red : Colors.black54,
