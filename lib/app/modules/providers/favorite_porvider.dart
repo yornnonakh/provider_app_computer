@@ -21,4 +21,6 @@ class FavoriteProvider extends ChangeNotifier {
 
     notifyListeners(); // 🔥 THIS IS THE KEY
   }
+
+  void favoriteProvider() {}
 }

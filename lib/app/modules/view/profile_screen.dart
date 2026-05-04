@@ -20,7 +20,6 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 20),
-
                 // 🔙 Back Button + Menu
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
@@ -42,9 +41,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 SizedBox(height: 20),
-
                 // 👤 Profile Image
                 CircleAvatar(
                   radius: 55,
@@ -52,9 +49,7 @@ class ProfileScreen extends StatelessWidget {
                     "https://i.pinimg.com/736x/1b/7b/e2/1b7be209fee3fd17943a981b5508384e.jpg",
                   ),
                 ),
-
                 SizedBox(height: 15),
-
                 // 🧑 Name
                 Text(
                   "Flutter",
@@ -64,17 +59,13 @@ class ProfileScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-
                 SizedBox(height: 5),
-
                 // 💼 Role
                 Text(
                   "Flutter Developer",
                   style: TextStyle(color: Colors.white70, fontSize: 16),
                 ),
-
                 SizedBox(height: 20),
-
                 // 📊 Stats
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -84,9 +75,7 @@ class ProfileScreen extends StatelessWidget {
                     _buildStat("35", "Repositories"),
                   ],
                 ),
-
                 SizedBox(height: 25),
-
                 // 📦 Card Section
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 20),
@@ -112,9 +101,7 @@ class ProfileScreen extends StatelessWidget {
                         "Passionate Flutter developer with experience building modern mobile applications, REST APIs, and clean UI design.",
                         style: TextStyle(color: Colors.white70),
                       ),
-
                       SizedBox(height: 20),
-
                       // 🛠 Skills
                       Text(
                         "Skills",
@@ -124,9 +111,7 @@ class ProfileScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-
                       const SizedBox(height: 10),
-
                       Wrap(
                         spacing: 10,
                         runSpacing: 10,
@@ -139,9 +124,7 @@ class ProfileScreen extends StatelessWidget {
                           _skillChip("Git"),
                         ],
                       ),
-
                       SizedBox(height: 20),
-
                       // 🔗 Social Buttons
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -154,7 +137,6 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 SizedBox(height: 30),
               ],
             ),
@@ -163,7 +145,6 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-
   // 📊 Stat Widget
   static Widget _buildStat(String number, String label) {
     return Column(
@@ -181,7 +162,6 @@ class ProfileScreen extends StatelessWidget {
       ],
     );
   }
-
   // 🛠 Skill Chip
   static Widget _skillChip(String text) {
     return Container(
@@ -193,7 +173,6 @@ class ProfileScreen extends StatelessWidget {
       child: Text(text, style: TextStyle(color: Colors.white)),
     );
   }
-
   // 🔗 Social Button
   static Widget _socialButton(IconData icon, String label) {
     return Column(

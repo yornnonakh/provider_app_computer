@@ -19,7 +19,6 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFFF7F8FA),
-
       appBar: AppBar(
         title: const Text("My Cart"),
         centerTitle: true,
@@ -40,7 +39,6 @@ class CartScreen extends StatelessWidget {
               itemCount: cartProvider.cartItem.length,
               itemBuilder: (context, index) {
                 final item = cartProvider.cartItem[index];
-
                 return Container(
                   margin: const EdgeInsets.only(bottom: 14),
                   padding: const EdgeInsets.all(12),
@@ -64,9 +62,7 @@ class CartScreen extends StatelessWidget {
                           child: Image.network(item.image),
                         ),
                       ),
-
-                      const SizedBox(width: 12),
-
+                      SizedBox(width: 12),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,11 +71,11 @@ class CartScreen extends StatelessWidget {
                               item.name,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
+                              style:  TextStyle(
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            const SizedBox(height: 6),
+                             SizedBox(height: 6),
                             Text(
                               "\$${item.price}",
                               style: TextStyle(
@@ -90,15 +86,14 @@ class CartScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-
                       Container(
-                        padding: const EdgeInsets.symmetric(
+                        padding:  EdgeInsets.symmetric(
                           horizontal: 8,
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: const Color(0xFFF1F3F6),
+                          color:  Color(0xFFF1F3F6),
                         ),
                         child: Row(
                           children: [
@@ -106,19 +101,17 @@ class CartScreen extends StatelessWidget {
                               icon: Icons.remove,
                               onTap: () => cartProvider.decrement(index),
                             ),
-
                             Padding(
-                              padding: const EdgeInsets.symmetric(
+                              padding:  EdgeInsets.symmetric(
                                 horizontal: 10,
                               ),
                               child: Text(
                                 item.stock.toString(),
-                                style: const TextStyle(
+                                style:  TextStyle(
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
-
                             _qtyButton(
                               icon: Icons.add,
                               onTap: () => cartProvider.increment(index),
@@ -132,12 +125,11 @@ class CartScreen extends StatelessWidget {
                 );
               },
             ),
-
       bottomNavigationBar: Container(
-        padding: const EdgeInsets.all(16),
+        padding:  EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
+          borderRadius:  BorderRadius.vertical(top: Radius.circular(25)),
           boxShadow: [
             BoxShadow(color: Colors.black.withOpacity(0.08), blurRadius: 15),
           ],
@@ -147,16 +139,16 @@ class CartScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding:  EdgeInsets.symmetric(horizontal: 12),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF1F3F6),
+                  color:  Color(0xFFF1F3F6),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.local_offer, size: 20),
-                    const SizedBox(width: 8),
-                    const Expanded(
+                     Icon(Icons.local_offer, size: 20),
+                     SizedBox(width: 8),
+                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: "Enter promo code",
@@ -168,24 +160,20 @@ class CartScreen extends StatelessWidget {
                       onPressed: () {
                         // TODO: Apply promo
                       },
-                      child: const Text("Apply"),
+                      child:  Text("Apply"),
                     ),
                   ],
                 ),
               ),
-
-              const SizedBox(height: 15),
-
+               SizedBox(height: 15),
               _priceRow("Subtotal", subtotal),
               _priceRow("Delivery Fee", deliveryFee),
               _priceRow("Discount", -discount),
-
-              const Divider(height: 20),
-
+               Divider(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                   Text(
                     "Total",
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                   ),
@@ -199,9 +187,7 @@ class CartScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
-              const SizedBox(height: 16),
-
+               SizedBox(height: 16),
               SizedBox(
                 width: double.infinity,
                 height: 55,
@@ -218,7 +204,7 @@ class CartScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(14),
                     ),
                   ),
-                  child: const Text(
+                  child:  Text(
                     "Proceed to Checkout",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
@@ -233,7 +219,6 @@ class CartScreen extends StatelessWidget {
       ),
     );
   }
-
   Widget _qtyButton({
     required IconData icon,
     required VoidCallback onTap,
@@ -257,17 +242,16 @@ class CartScreen extends StatelessWidget {
       ),
     );
   }
-
   Widget _priceRow(String title, double amount) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding:  EdgeInsets.symmetric(vertical: 4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: const TextStyle(color: Colors.grey)),
+          Text(title, style:  TextStyle(color: Colors.grey)),
           Text(
             "${amount >= 0 ? "" : "-"}\$${amount.abs().toStringAsFixed(2)}",
-            style: const TextStyle(fontWeight: FontWeight.w500),
+            style:  TextStyle(fontWeight: FontWeight.w500),
           ),
         ],
       ),

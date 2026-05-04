@@ -13,7 +13,6 @@ class FavoriteScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFFF7F8FA),
-
       appBar: AppBar(
         title: const Text(
           "My Favorites",
@@ -24,7 +23,6 @@ class FavoriteScreen extends StatelessWidget {
         elevation: 0,
         foregroundColor: Colors.black,
       ),
-
       body: favorites.isEmpty
           ? const Center(
               child: Column(
@@ -44,7 +42,6 @@ class FavoriteScreen extends StatelessWidget {
               itemCount: favorites.length,
               itemBuilder: (context, index) {
                 final product = favorites[index];
-
                 return Container(
                   margin: const EdgeInsets.only(bottom: 12),
                   padding: const EdgeInsets.all(12),
@@ -68,9 +65,7 @@ class FavoriteScreen extends StatelessWidget {
                           child: Image.network(product.image),
                         ),
                       ),
-
                       const SizedBox(width: 12),
-
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +90,6 @@ class FavoriteScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-
                       IconButton(
                         onPressed: () {
                           favoriteProvider.toggleFavorite(product);

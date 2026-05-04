@@ -59,10 +59,8 @@ class _BottomNavState extends State<BottomNav> {
       ),
     );
   }
-
   Widget _navItem(IconData icon, int index) {
     final isSelected = selectedIndex == index;
-
     return GestureDetector(
       onTap: () {
         setState(() {

@@ -9,17 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutScreen extends StatelessWidget {
-  CheckoutScreen({super.key});
+  const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final cartProvider = context.watch<CartProvider>();
     final addressProvider = context.watch<AddressProvider>();
     final paymentProvider = context.watch<PaymentProvider>(); // ✅ NEW
-
     return Scaffold(
       backgroundColor: Color(0xFFF7F8FA),
-
       appBar: AppBar(
         title: Text("Checkout"),
         centerTitle: true,
@@ -27,7 +25,6 @@ class CheckoutScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
       ),
-
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -43,7 +40,6 @@ class CheckoutScreen extends StatelessWidget {
               children: List.generate(address.length, (index) {
                 final item = address[index];
                 final isSelected = addressProvider.selectedIndex == index;
-
                 return GestureDetector(
                   onTap: () => addressProvider.select(index),
                   child: AnimatedContainer(
@@ -75,7 +71,6 @@ class CheckoutScreen extends StatelessWidget {
                           color: Theme.of(context).primaryColor,
                         ),
                         SizedBox(width: 12),
-
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,20 +95,16 @@ class CheckoutScreen extends StatelessWidget {
                 );
               }),
             ),
-
             SizedBox(height: 20),
-
             Text(
               "Payment Method",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             ),
             SizedBox(height: 12),
-
             Column(
               children: List.generate(payment.length, (index) {
                 final item = payment[index];
                 final isSelected = paymentProvider.selectedIndex == index;
-
                 return GestureDetector(
                   onTap: () => paymentProvider.select(index),
                   child: AnimatedContainer(

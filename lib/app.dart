@@ -3,6 +3,7 @@ import 'package:computer_app_provider/app/modules/providers/address_proivder.dar
 import 'package:computer_app_provider/app/modules/providers/cart_provider.dart';
 import 'package:computer_app_provider/app/modules/providers/favorite_porvider.dart';
 import 'package:computer_app_provider/app/modules/providers/payment_provider.dart';
+import 'package:computer_app_provider/app/modules/providers/search_provider.dart';
 import 'package:computer_app_provider/app/modules/widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => AddressProvider()),
         ChangeNotifierProvider(create: (context) => PaymentProvider()),
         ChangeNotifierProvider(create: (context) => FavoriteProvider()),
+         ChangeNotifierProvider(create: (_) => SearchProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

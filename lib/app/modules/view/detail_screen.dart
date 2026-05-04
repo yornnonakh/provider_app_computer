@@ -12,8 +12,7 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF7F8FA),
-
+      backgroundColor:  Color(0xFFF7F8FA),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -22,7 +21,7 @@ class ProductDetailScreen extends StatelessWidget {
         }),
         actions: [
           _iconBtn(context, Icons.favorite_border, () {}),
-          const SizedBox(width: 8),
+           SizedBox(width: 8),
         ],
       ),
       body: Column(
@@ -36,14 +35,13 @@ class ProductDetailScreen extends StatelessWidget {
               ),
             ),
           ),
-
           Expanded(
             flex: 6,
             child: Container(
-              padding: const EdgeInsets.all(20),
+              padding:  EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: const BorderRadius.vertical(
+                borderRadius:  BorderRadius.vertical(
                   top: Radius.circular(30),
                 ),
                 boxShadow: [
@@ -62,14 +60,14 @@ class ProductDetailScreen extends StatelessWidget {
                       Expanded(
                         child: Text(
                           pro.name,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.symmetric(
+                        padding: EdgeInsets.symmetric(
                           horizontal: 12,
                           vertical: 6,
                         ),
@@ -88,10 +86,9 @@ class ProductDetailScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
-
+                  SizedBox(height: 10),
                   Row(
-                    children: const [
+                    children: [
                       Icon(Icons.star, color: Colors.amber, size: 18),
                       SizedBox(width: 4),
                       Text(
@@ -102,20 +99,17 @@ class ProductDetailScreen extends StatelessWidget {
                       Text("125 Reviews", style: TextStyle(color: Colors.grey)),
                     ],
                   ),
-                  const SizedBox(height: 16),
-
+                  SizedBox(height: 16),
                   Text(
                     pro.description,
-                    style: const TextStyle(color: Colors.grey, height: 1.5),
+                    style: TextStyle(color: Colors.grey, height: 1.5),
                   ),
-                  const SizedBox(height: 18),
-
-                  const Text(
+                  SizedBox(height: 18),
+                  Text(
                     "Specifications",
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                   ),
-                  const SizedBox(height: 10),
-
+                  SizedBox(height: 10),
                   Expanded(
                     child: ListView(
                       children: [
@@ -133,9 +127,8 @@ class ProductDetailScreen extends StatelessWidget {
           ),
         ],
       ),
-
       bottomNavigationBar: Container(
-        padding: const EdgeInsets.all(16),
+        padding:  EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
@@ -159,17 +152,15 @@ class ProductDetailScreen extends StatelessWidget {
                     specs: pro.specs,
                   ),
                 );
-
                 log("Added to cart");
-
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     behavior: SnackBarBehavior.floating,
                     backgroundColor: Colors.transparent,
                     elevation: 0,
-                    duration: const Duration(seconds: 2),
+                    duration:  Duration(seconds: 2),
                     content: Container(
-                      padding: const EdgeInsets.all(14),
+                      padding:  EdgeInsets.all(14),
                       decoration: BoxDecoration(
                         color: Colors.green.shade600,
                         borderRadius: BorderRadius.circular(16),
@@ -177,26 +168,26 @@ class ProductDetailScreen extends StatelessWidget {
                           BoxShadow(
                             color: Colors.black.withOpacity(0.15),
                             blurRadius: 15,
-                            offset: const Offset(0, 8),
+                            offset:  Offset(0, 8),
                           ),
                         ],
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.check_circle, color: Colors.white),
-                          const SizedBox(width: 12),
+                           Icon(Icons.check_circle, color: Colors.white),
+                           SizedBox(width: 12),
 
                           Expanded(
                             child: Text(
                               "${pro.name} added successfully",
-                              style: const TextStyle(
+                              style:  TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
 
-                          const Icon(
+                           Icon(
                             Icons.close,
                             color: Colors.white,
                             size: 18,
@@ -226,10 +217,9 @@ class ProductDetailScreen extends StatelessWidget {
       ),
     );
   }
-
   Widget _iconBtn(BuildContext context, IconData icon, VoidCallback onTap) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding:  EdgeInsets.all(8),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -248,16 +238,15 @@ class ProductDetailScreen extends StatelessWidget {
       ),
     );
   }
-
   Widget _feature(String title, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding:  EdgeInsets.symmetric(vertical: 6),
       child: Row(
         children: [
           Expanded(
-            child: Text(title, style: const TextStyle(color: Colors.grey)),
+            child: Text(title, style:  TextStyle(color: Colors.grey)),
           ),
-          Text(value, style: const TextStyle(fontWeight: FontWeight.w600)),
+          Text(value, style:  TextStyle(fontWeight: FontWeight.w600)),
         ],
       ),
     );

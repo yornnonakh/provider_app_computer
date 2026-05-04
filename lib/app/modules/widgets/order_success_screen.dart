@@ -20,6 +20,7 @@ class OrderSuccessScreen extends StatelessWidget {
                 width: 200,
                 height: 200,
                 decoration: BoxDecoration(
+                  // ignore: deprecated_member_use
                   color: Colors.green.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
@@ -37,7 +38,6 @@ class OrderSuccessScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.grey),
               ),
               SizedBox(height: 30),
-
               SizedBox(
                 width: double.infinity,
                 height: 55,
