@@ -53,6 +53,7 @@ class CartScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(18),
                     boxShadow: [
                       BoxShadow(
+                        // ignore: deprecated_member_use
                         color: Colors.black.withOpacity(0.05),
                         blurRadius: 10,
                       ),
@@ -133,6 +134,7 @@ class CartScreen extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
           boxShadow: [
+            // ignore: deprecated_member_use
             BoxShadow(color: Colors.black.withOpacity(0.08), blurRadius: 15),
           ],
         ),
@@ -148,7 +150,11 @@ class CartScreen extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.local_offer, size: 20),
+                    Icon(
+                      Icons.local_offer,
+                      size: 20,
+                      color: Theme.of(context).primaryColor,
+                    ),
                     SizedBox(width: 8),
                     Expanded(
                       child: TextField(
@@ -159,10 +165,11 @@ class CartScreen extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {
-                        // TODO: Apply promo
-                      },
-                      child: Text("Apply"),
+                      onPressed: () {},
+                      child: Text(
+                        "Apply",
+                        style: TextStyle(color: Theme.of(context).primaryColor),
+                      ),
                     ),
                   ],
                 ),

@@ -52,6 +52,7 @@ class ProductDetailScreen extends StatelessWidget {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
                 boxShadow: [
                   BoxShadow(
+                    // ignore: deprecated_member_use
                     color: Colors.black.withOpacity(0.08),
                     blurRadius: 15,
                   ),
@@ -136,7 +137,7 @@ class ProductDetailScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.scaffold,
           boxShadow: [
             BoxShadow(color: Colors.black.withOpacity(0.08), blurRadius: 20),
           ],
@@ -228,7 +229,7 @@ class ProductDetailScreen extends StatelessWidget {
           width: 42,
           height: 42,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.scaffold,
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10),
