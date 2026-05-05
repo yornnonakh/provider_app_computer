@@ -19,7 +19,7 @@ class CheckoutScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF7F8FA),
       appBar: AppBar(
-        title: Text("Checkout", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text("Checkout", style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor)),
         centerTitle: true,
         // elevation: 0,
         backgroundColor: Colors.transparent,
@@ -190,7 +190,7 @@ class CheckoutScreen extends StatelessWidget {
                     "Total :",
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.grey,
+                      color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
