@@ -24,7 +24,6 @@ class FavoriteButton extends StatelessWidget {
             const Center(
               child: Icon(Icons.favorite_border, color: Colors.black),
             ),
-
             /// 🔴 Badge
             if (fav.count > 0) // ✅ use getter
               Positioned(
@@ -32,8 +31,8 @@ class FavoriteButton extends StatelessWidget {
                 top: 6,
                 child: Container(
                   padding: const EdgeInsets.all(5),
-                  decoration: const BoxDecoration(
-                    color: Colors.red,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
                     shape: BoxShape.circle,
                   ),
                   child: Text(

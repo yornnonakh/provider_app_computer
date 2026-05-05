@@ -184,7 +184,11 @@ class _EmptyState extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.favorite_border, size: 80, color: Colors.grey.shade400),
+          Icon(
+            Icons.favorite_border,
+            size: 90,
+            color: Theme.of(context).primaryColor,
+          ),
           const SizedBox(height: 12),
           const Text(
             "No favorites yet",

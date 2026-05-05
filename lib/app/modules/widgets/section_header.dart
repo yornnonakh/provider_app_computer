@@ -5,13 +5,18 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        Text("Popular Products",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-        Text("View All"),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 15, bottom: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            "Popular Products",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          Text("View All", style: TextStyle(fontWeight: FontWeight.bold)),
+        ],
+      ),
     );
   }
 }

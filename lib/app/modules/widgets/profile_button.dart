@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ProfileButton extends StatelessWidget {
+class NotificationButton extends StatelessWidget {
   final VoidCallback? onTap;
 
-  const ProfileButton({super.key, this.onTap});
+  const NotificationButton({super.key, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -13,19 +13,20 @@ class ProfileButton extends StatelessWidget {
         margin: const EdgeInsets.only(right: 12),
         width: 45,
         height: 45,
-        decoration: _boxDecoration(),
-        child: const Icon(Icons.person, color: Colors.black),
+        decoration: _boxDecoration(BuildContext, context),
+        child: Icon(Icons.notifications, color: Theme.of(context).primaryColor),
       ),
     );
   }
 
-  BoxDecoration _boxDecoration() {
+  // ignore: non_constant_identifier_names, avoid_types_as_parameter_names, strict_top_level_inference
+  BoxDecoration _boxDecoration(BuildContext, context) {
     return BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(14),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.05),
+          color: Theme.of(context).primaryColor.withOpacity(0.05),
           blurRadius: 10,
         ),
       ],

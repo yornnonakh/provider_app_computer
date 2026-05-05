@@ -25,7 +25,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             );
           },
         ),
-        ProfileButton(
+        NotificationButton(
           onTap: () {
             // go to profile
           },
