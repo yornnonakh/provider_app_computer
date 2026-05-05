@@ -12,17 +12,25 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Color(0xFFF7F8FA),
+      backgroundColor: Color(0xFFF7F8FA),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: _iconBtn(context, Icons.arrow_back_ios, () {
           Navigator.pop(context);
         }),
+        title: Text(
+          'Detail Screen',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
         actions: [
           _iconBtn(context, Icons.favorite_border, () {}),
-           SizedBox(width: 8),
+          SizedBox(width: 8),
         ],
+        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -38,12 +46,10 @@ class ProductDetailScreen extends StatelessWidget {
           Expanded(
             flex: 6,
             child: Container(
-              padding:  EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius:  BorderRadius.vertical(
-                  top: Radius.circular(30),
-                ),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.08),
@@ -128,7 +134,7 @@ class ProductDetailScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        padding:  EdgeInsets.all(16),
+        padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
@@ -158,9 +164,9 @@ class ProductDetailScreen extends StatelessWidget {
                     behavior: SnackBarBehavior.floating,
                     backgroundColor: Colors.transparent,
                     elevation: 0,
-                    duration:  Duration(seconds: 2),
+                    duration: Duration(seconds: 2),
                     content: Container(
-                      padding:  EdgeInsets.all(14),
+                      padding: EdgeInsets.all(14),
                       decoration: BoxDecoration(
                         color: Colors.green.shade600,
                         borderRadius: BorderRadius.circular(16),
@@ -168,30 +174,24 @@ class ProductDetailScreen extends StatelessWidget {
                           BoxShadow(
                             color: Colors.black.withOpacity(0.15),
                             blurRadius: 15,
-                            offset:  Offset(0, 8),
+                            offset: Offset(0, 8),
                           ),
                         ],
                       ),
                       child: Row(
                         children: [
-                           Icon(Icons.check_circle, color: Colors.white),
-                           SizedBox(width: 12),
-
+                          Icon(Icons.check_circle, color: Colors.white),
+                          SizedBox(width: 12),
                           Expanded(
                             child: Text(
                               "${pro.name} added successfully",
-                              style:  TextStyle(
+                              style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
-
-                           Icon(
-                            Icons.close,
-                            color: Colors.white,
-                            size: 18,
-                          ),
+                          Icon(Icons.close, color: Colors.white, size: 18),
                         ],
                       ),
                     ),
@@ -207,7 +207,7 @@ class ProductDetailScreen extends StatelessWidget {
               child: Text(
                 "Add to Cart",
                 style: TextStyle(
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.bold,
                   color: AppColors.scaffold,
                 ),
               ),
@@ -217,9 +217,10 @@ class ProductDetailScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget _iconBtn(BuildContext context, IconData icon, VoidCallback onTap) {
     return Padding(
-      padding:  EdgeInsets.all(8),
+      padding: EdgeInsets.all(8),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -238,15 +239,16 @@ class ProductDetailScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget _feature(String title, String value) {
     return Padding(
-      padding:  EdgeInsets.symmetric(vertical: 6),
+      padding: EdgeInsets.symmetric(vertical: 6),
       child: Row(
         children: [
           Expanded(
-            child: Text(title, style:  TextStyle(color: Colors.grey)),
+            child: Text(title, style: TextStyle(color: Colors.grey)),
           ),
-          Text(value, style:  TextStyle(fontWeight: FontWeight.w600)),
+          Text(value, style: TextStyle(fontWeight: FontWeight.w600)),
         ],
       ),
     );

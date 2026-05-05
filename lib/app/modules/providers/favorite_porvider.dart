@@ -23,4 +23,8 @@ class FavoriteProvider extends ChangeNotifier {
   }
 
   void favoriteProvider() {}
+  void addFavoriteAt(dynamic product, int index) {
+    _favorites.insert(index, product);
+    notifyListeners();
+  }
 }

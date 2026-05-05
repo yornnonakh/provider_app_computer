@@ -1,8 +1,8 @@
-import 'package:computer_app_provider/app/modules/providers/favorite_porvider.dart';
-import 'package:computer_app_provider/app/modules/widgets/product_image.dart';
-import 'package:computer_app_provider/app/modules/widgets/product_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../providers/favorite_porvider.dart';
+import 'product_image.dart';
+import 'product_info.dart';
 
 class ProductCard extends StatelessWidget {
   final dynamic product;
@@ -11,17 +11,54 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fav = context.watch<FavoriteProvider>();
-    fav.isFavorite(product);
-
-    return Container(
-      decoration: _cardDecoration(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ProductImage(product: product),
-          ProductInfo(product: product),
-        ],
+    final favoriteProvider = context.watch<FavoriteProvider>();
+    final isFav = favoriteProvider.isFavorite(product);
+    return GestureDetector(
+      onTap: () {},
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+        decoration: _cardDecoration(),
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ProductImage(product: product),
+                ProductInfo(product: product),
+              ],
+            ),
+            Positioned(
+              top: 10,
+              right: 10,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(50),
+                onTap: () {
+                  context.read<FavoriteProvider>().toggleFavorite(product);
+                },
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 200),
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 8,
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    isFav ? Icons.favorite : Icons.favorite_border,
+                    color: isFav ? Colors.red : Colors.grey,
+                    size: 20,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -34,7 +71,7 @@ class ProductCard extends StatelessWidget {
         BoxShadow(
           color: Colors.black.withOpacity(0.06),
           blurRadius: 20,
-          offset: const Offset(0, 10),
+          offset: Offset(0, 10),
         ),
       ],
     );

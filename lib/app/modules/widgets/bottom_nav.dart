@@ -7,11 +7,9 @@ import 'package:flutter/material.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
-
   @override
   State<BottomNav> createState() => _BottomNavState();
 }
-
 class _BottomNavState extends State<BottomNav> {
   int selectedIndex = 0;
 
@@ -21,20 +19,16 @@ class _BottomNavState extends State<BottomNav> {
     const FavoriteScreen(),
     const ProfileScreen(),
   ];
-
   @override
   void initState() {
     super.initState();
     ApiService.getProduct();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF7F8FA),
-
       body: screens[selectedIndex],
-
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16),
         child: Container(
@@ -59,6 +53,7 @@ class _BottomNavState extends State<BottomNav> {
       ),
     );
   }
+
   Widget _navItem(IconData icon, int index) {
     final isSelected = selectedIndex == index;
     return GestureDetector(
@@ -72,6 +67,7 @@ class _BottomNavState extends State<BottomNav> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
           color: isSelected
+              // ignore: deprecated_member_use
               ? Theme.of(context).primaryColor.withOpacity(0.15)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(20),
