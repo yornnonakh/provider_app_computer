@@ -14,7 +14,7 @@ class NotificationButton extends StatelessWidget {
         width: 45,
         height: 45,
         decoration: _boxDecoration(BuildContext, context),
-        child: Icon(Icons.notifications, color: Theme.of(context).primaryColor),
+        child: Icon(Icons.notifications, color: Theme.of(context).primaryColor, size: 30,),
       ),
     );
   }
@@ -23,7 +23,7 @@ class NotificationButton extends StatelessWidget {
   BoxDecoration _boxDecoration(BuildContext, context) {
     return BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.circular(14),
+      borderRadius: BorderRadius.circular(10),
       boxShadow: [
         BoxShadow(
           color: Theme.of(context).primaryColor.withOpacity(0.05),

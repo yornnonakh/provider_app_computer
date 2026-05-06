@@ -10,7 +10,7 @@ class ProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fav = context.watch<FavoriteProvider>();
-    final isFav = fav.isFavorite(product);
+    fav.isFavorite(product);
 
     return Stack(
       children: [
@@ -28,20 +28,20 @@ class ProductImage extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
-          right: 10,
-          top: 10,
-          child: GestureDetector(
-            onTap: () => fav.toggleFavorite(product),
-            child: CircleAvatar(
-              backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
-              child: Icon(
-                isFav ? Icons.favorite : Icons.favorite_border,
-                color: isFav ? Colors.red : Colors.black54,
-              ),
-            ),
-          ),
-        ),
+        // Positioned(
+        //   right: 5,
+        //   top: 6,
+        //   child: GestureDetector(
+        //     onTap: () => fav.toggleFavorite(product),
+        //     child: CircleAvatar(
+        //       backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
+        //       child: Icon(
+        //         isFav ? Icons.favorite : Icons.favorite_border,
+        //         color: isFav ? Colors.red : Colors.black54,
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }
