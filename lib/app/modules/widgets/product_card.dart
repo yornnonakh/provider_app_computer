@@ -38,21 +38,21 @@ class ProductCard extends StatelessWidget {
                 },
                 child: AnimatedContainer(
                   duration: Duration(milliseconds: 200),
-                  padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.all(3),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.1),
-                        blurRadius: 8,
+                        blurRadius: 4,
                       ),
                     ],
                   ),
                   child: Icon(
                     isFav ? Icons.favorite : Icons.favorite_border,
                     color: isFav ? Colors.red : Colors.grey,
-                    size: 20,
+                    size: 25,
                   ),
                 ),
               ),
@@ -70,8 +70,7 @@ class ProductCard extends StatelessWidget {
       boxShadow: [
         BoxShadow(
           color: Colors.black.withOpacity(0.06),
-          blurRadius: 20,
-          offset: Offset(0, 10),
+          blurRadius: 20, 
         ),
       ],
     );

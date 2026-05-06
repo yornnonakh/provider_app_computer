@@ -156,8 +156,8 @@ class _FavoriteCard extends StatelessWidget {
 
                   // ❤️ Favorite tag
                   Row(
-                    children: const [
-                      Icon(Icons.favorite, size: 16, color: Colors.red),
+                    children:  [
+                      Icon(Icons.favorite, size: 25, color: Theme.of(context).primaryColor),
                       SizedBox(width: 4),
                       Text(
                         "Saved",
@@ -187,7 +187,7 @@ class _EmptyState extends StatelessWidget {
           Icon(
             Icons.favorite_border,
             size: 90,
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).primaryColor.withOpacity(0.8),
           ),
           const SizedBox(height: 12),
           const Text(

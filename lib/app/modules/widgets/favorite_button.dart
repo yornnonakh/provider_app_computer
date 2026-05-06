@@ -14,15 +14,19 @@ class FavoriteButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(right: 8),
+        margin: EdgeInsets.only(right: 8),
         width: 45,
         height: 45,
         decoration: _boxDecoration(),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            const Center(
-              child: Icon(Icons.favorite_border, color: Colors.black),
+            Center(
+              child: Icon(
+                Icons.favorite_border,
+                size: 30,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
             /// 🔴 Badge
             if (fav.count > 0) // ✅ use getter
@@ -30,7 +34,7 @@ class FavoriteButton extends StatelessWidget {
                 right: 6,
                 top: 6,
                 child: Container(
-                  padding: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(7),
                   decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
                     shape: BoxShape.circle,
