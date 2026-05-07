@@ -11,7 +11,7 @@ class FavoriteScreen extends StatelessWidget {
     final favorites = context.watch<FavoriteProvider>().favorites;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F6FA),
+      backgroundColor: Color(0xFFF5F6FA),
       appBar: AppBar(
         title: Text(
           "My Favorites",
@@ -26,11 +26,11 @@ class FavoriteScreen extends StatelessWidget {
         foregroundColor: Colors.black,
       ),
       body: favorites.isEmpty
-          ? const _EmptyState()
+          ? _EmptyState()
           : ListView.separated(
-              padding: const EdgeInsets.all(16),
+              padding: EdgeInsets.all(16),
               itemCount: favorites.length,
-              separatorBuilder: (_, _) => const SizedBox(height: 14),
+              separatorBuilder: (_, _) => SizedBox(height: 14),
               itemBuilder: (context, index) {
                 final product = favorites[index];
 
@@ -73,13 +73,14 @@ class FavoriteScreen extends StatelessWidget {
 
   Widget _deleteBackground() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
+        // ignore: deprecated_member_use
         color: Colors.red,
         borderRadius: BorderRadius.circular(20),
       ),
       alignment: Alignment.centerRight,
-      child: const Icon(Icons.delete, color: Colors.white, size: 28),
+      child: Icon(Icons.delete, color: Colors.white, size: 28),
     );
   }
 }
@@ -87,20 +88,21 @@ class FavoriteScreen extends StatelessWidget {
 class _FavoriteCard extends StatelessWidget {
   final dynamic product;
 
-  const _FavoriteCard({required this.product});
+  _FavoriteCard({required this.product});
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 200),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
+            // ignore: deprecated_member_use
             color: Colors.black.withOpacity(0.04),
             blurRadius: 15,
-            offset: const Offset(0, 6),
+            offset: Offset(0, 6),
           ),
         ],
       ),
@@ -108,16 +110,13 @@ class _FavoriteCard extends StatelessWidget {
         children: [
           // 📸 Image
           ClipRRect(
-            borderRadius: const BorderRadius.horizontal(
-              left: Radius.circular(20),
-            ),
+            borderRadius: BorderRadius.horizontal(left: Radius.circular(20)),
             child: SizedBox(
               width: 110,
               height: 110,
               child: Image.network(
                 product.image,
-                errorBuilder: (_, _, _) =>
-                    const Icon(Icons.image_not_supported),
+                errorBuilder: (_, _, _) => Icon(Icons.image_not_supported),
               ),
             ),
           ),
@@ -125,7 +124,7 @@ class _FavoriteCard extends StatelessWidget {
           // 📄 Info
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(12),
+              padding: EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -134,13 +133,10 @@ class _FavoriteCard extends StatelessWidget {
                     product.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
                   ),
 
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6),
 
                   // 💰 Price
                   Text(
@@ -152,12 +148,16 @@ class _FavoriteCard extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
 
                   // ❤️ Favorite tag
                   Row(
-                    children:  [
-                      Icon(Icons.favorite, size: 25, color: Theme.of(context).primaryColor),
+                    children: [
+                      Icon(
+                        Icons.favorite,
+                        size: 25,
+                        color: Theme.of(context).primaryColor,
+                      ),
                       SizedBox(width: 4),
                       Text(
                         "Saved",
@@ -176,7 +176,7 @@ class _FavoriteCard extends StatelessWidget {
 }
 
 class _EmptyState extends StatelessWidget {
-  const _EmptyState();
+  _EmptyState();
 
   @override
   Widget build(BuildContext context) {
@@ -187,10 +187,11 @@ class _EmptyState extends StatelessWidget {
           Icon(
             Icons.favorite_border,
             size: 90,
+            // ignore: deprecated_member_use
             color: Theme.of(context).primaryColor.withOpacity(0.8),
           ),
-          const SizedBox(height: 12),
-          const Text(
+          SizedBox(height: 12),
+          Text(
             "No favorites yet",
             style: TextStyle(
               fontSize: 18,

@@ -22,6 +22,7 @@ class SearchField extends StatelessWidget {
             offset: const Offset(0, 10),
           ),
         ],
+        // ignore: deprecated_member_use
         border: Border.all(color: Colors.grey.withOpacity(0.2)),
       ),
       child: Row(
