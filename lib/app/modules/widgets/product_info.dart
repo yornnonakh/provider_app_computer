@@ -34,12 +34,19 @@ class ProductInfo extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.amber.withOpacity(0.2)
+                  // ignore: deprecated_member_use
+                  color: Theme.of(context).primaryColor.withOpacity(0.2),
                 ),
-                child:  Padding(
+                child: Padding(
                   padding: const EdgeInsets.all(10),
-                  child: Text("In stock", style: TextStyle(fontSize: 12)),
-                )),
+                  child: Text(
+                    "In stock",
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold,
+                      // color: Colors.white
+                    )
+                  ),
+                ),
+              ),
               AddButton(product: product),
             ],
           ),
