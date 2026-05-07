@@ -8,6 +8,7 @@ import 'package:computer_app_provider/app/modules/providers/cart_provider.dart';
 class ProductDetailScreen extends StatelessWidget {
   final Product pro;
   const ProductDetailScreen({super.key, required this.pro});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -232,7 +233,8 @@ class ProductDetailScreen extends StatelessWidget {
             color: AppColors.scaffold,
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
-              BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10),
+              // ignore: deprecated_member_use
+              BoxShadow(color: Colors.grey.withOpacity(0.3), blurRadius: 10),
             ],
           ),
           child: Icon(icon, size: 20),
@@ -247,7 +249,7 @@ class ProductDetailScreen extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Text(title, style: TextStyle(color: Colors.grey)),
+            child: Text(title, style: TextStyle(color: Colors.grey )),
           ),
           Text(value, style: TextStyle(fontWeight: FontWeight.w600)),
         ],
