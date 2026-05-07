@@ -1,6 +1,7 @@
 import 'package:computer_app_provider/app/core/constants/app_colors.dart';
 import 'package:computer_app_provider/app/modules/providers/cart_provider.dart';
 import 'package:computer_app_provider/app/modules/view/check_out_screen.dart';
+import 'package:computer_app_provider/app/modules/widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,17 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF7F8FA),
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            // logic over here
+            // Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => BottomNav()),
+            );
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
         title: Text(
           "My Cart",
           style: TextStyle(
@@ -100,7 +112,7 @@ class CartScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                           color: Theme.of(
                             context,
-                          // ignore: deprecated_member_use
+                            // ignore: deprecated_member_use
                           ).primaryColor.withOpacity(0.1),
                         ),
                         child: Row(
