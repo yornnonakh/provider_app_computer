@@ -13,17 +13,23 @@ class FavoriteScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF5F6FA),
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: _iconBtn(context, Icons.arrow_back_ios, () {
+          Navigator.pop(context);
+        }),
         title: Text(
-          "My Favorites",
+          'My Favorite',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Theme.of(context).primaryColor,
           ),
         ),
+        actions: [
+          _iconBtn(context, Icons.favorite_border, () {}),
+          SizedBox(width: 8),
+        ],
         centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: Colors.black,
       ),
       body: favorites.isEmpty
           ? _EmptyState()
@@ -67,6 +73,21 @@ class FavoriteScreen extends StatelessWidget {
                 );
               },
             ),
+    );
+  }
+
+  Widget _iconBtn(
+    BuildContext context,
+    IconData icon,
+    VoidCallback onPressed, {
+    Color? color,
+    double size = 30,
+  }) {
+    final resolvedColor = color ?? Theme.of(context).primaryColor;
+
+    return IconButton(
+      icon: Icon(icon, color: resolvedColor, size: size),
+      onPressed: onPressed,
     );
   }
 
