@@ -69,8 +69,8 @@ class ProductCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.06),
-          blurRadius: 20, 
+          color: Colors.black.withOpacity(0.1),
+          blurRadius: 4,
         ),
       ],
     );

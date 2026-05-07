@@ -16,7 +16,7 @@ class FavoriteScreen extends StatelessWidget {
         title: Text(
           "My Favorites",
           style: TextStyle(
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.bold,
             color: Theme.of(context).primaryColor,
           ),
         ),
@@ -33,37 +33,36 @@ class FavoriteScreen extends StatelessWidget {
               separatorBuilder: (_, _) => SizedBox(height: 14),
               itemBuilder: (context, index) {
                 final product = favorites[index];
-
                 return Dismissible(
                   key: ValueKey(product.id),
                   direction: DismissDirection.endToStart,
                   background: _deleteBackground(),
-
                   onDismissed: (_) {
                     final removedProduct = product;
                     final removedIndex = index;
-
                     context.read<FavoriteProvider>().toggleFavorite(product);
-
+                    final favoriteProvider = context.read<FavoriteProvider>();
                     showGeneralDialog(
                       context: context,
                       barrierDismissible: false,
                       barrierColor: Colors.transparent,
-                      pageBuilder: (_, _, _) {
+                      pageBuilder: (dialogContext, _, _) {
                         return DeleteActionBar(
                           title: "${removedProduct.name} removed",
                           onUndo: () {
-                            context.read<FavoriteProvider>().addFavoriteAt(
+                            favoriteProvider.addFavoriteAt(
                               removedProduct,
                               removedIndex,
                             );
+                            Navigator.pop(dialogContext);
                           },
-                          onDelete: () {},
+                          onDelete: () {
+                            Navigator.pop(dialogContext);
+                          },
                         );
                       },
                     );
                   },
-
                   child: _FavoriteCard(product: product),
                 );
               },
@@ -88,7 +87,7 @@ class FavoriteScreen extends StatelessWidget {
 class _FavoriteCard extends StatelessWidget {
   final dynamic product;
 
-  _FavoriteCard({required this.product});
+  const _FavoriteCard({required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +107,6 @@ class _FavoriteCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // 📸 Image
           ClipRRect(
             borderRadius: BorderRadius.horizontal(left: Radius.circular(20)),
             child: SizedBox(
@@ -120,25 +118,19 @@ class _FavoriteCard extends StatelessWidget {
               ),
             ),
           ),
-
-          // 📄 Info
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // 🏷 Title
                   Text(
                     product.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
                   ),
-
                   SizedBox(height: 6),
-
-                  // 💰 Price
                   Text(
                     "\$${product.price}",
                     style: TextStyle(
@@ -147,10 +139,7 @@ class _FavoriteCard extends StatelessWidget {
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
-
                   SizedBox(height: 8),
-
-                  // ❤️ Favorite tag
                   Row(
                     children: [
                       Icon(
@@ -160,7 +149,7 @@ class _FavoriteCard extends StatelessWidget {
                       ),
                       SizedBox(width: 4),
                       Text(
-                        "Saved",
+                        'Saved',
                         style: TextStyle(fontSize: 12, color: Colors.grey),
                       ),
                     ],
@@ -176,7 +165,7 @@ class _FavoriteCard extends StatelessWidget {
 }
 
 class _EmptyState extends StatelessWidget {
-  _EmptyState();
+  const _EmptyState();
 
   @override
   Widget build(BuildContext context) {
