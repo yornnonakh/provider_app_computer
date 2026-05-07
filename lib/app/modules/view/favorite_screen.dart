@@ -75,7 +75,6 @@ class FavoriteScreen extends StatelessWidget {
             ),
     );
   }
-
   Widget _iconBtn(
     BuildContext context,
     IconData icon,
@@ -84,13 +83,11 @@ class FavoriteScreen extends StatelessWidget {
     double size = 30,
   }) {
     final resolvedColor = color ?? Theme.of(context).primaryColor;
-
     return IconButton(
       icon: Icon(icon, color: resolvedColor, size: size),
       onPressed: onPressed,
     );
   }
-
   Widget _deleteBackground() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),

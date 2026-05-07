@@ -80,6 +80,7 @@ class ProductDetailScreen extends StatelessWidget {
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
+                          // ignore: deprecated_member_use
                           color: Colors.blue.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -140,6 +141,7 @@ class ProductDetailScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.scaffold,
           boxShadow: [
+            // ignore: deprecated_member_use
             BoxShadow(color: Colors.black.withOpacity(0.08), blurRadius: 20),
           ],
         ),
@@ -174,6 +176,7 @@ class ProductDetailScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
+                            // ignore: deprecated_member_use
                             color: Colors.black.withOpacity(0.15),
                             blurRadius: 15,
                             offset: Offset(0, 8),
