@@ -12,11 +12,11 @@ class EmptySearchView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+         Text(
           "Recent Searches",
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 10),
+         SizedBox(height: 10),
 
         Wrap(
           spacing: 8,

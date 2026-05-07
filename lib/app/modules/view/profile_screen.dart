@@ -13,7 +13,6 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 10),
-              // 🔙 Top Bar
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
@@ -34,7 +33,6 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              // 🧾 Profile Card
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 padding: EdgeInsets.all(20),
@@ -43,6 +41,7 @@ class ProfileScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
+                      // ignore: deprecated_member_use
                       color: Colors.black.withOpacity(0.05),
                       blurRadius: 15,
                       offset: Offset(0, 5),
@@ -91,11 +90,8 @@ class ProfileScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 20),
-                    // 🔶 Edit Button
                     GestureDetector(
-                      onTap: () {
-                        // your action here
-                      },
+                      onTap: () {},
                       child: Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 30,
@@ -104,11 +100,13 @@ class ProfileScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Theme.of(
                             context,
+                          // ignore: deprecated_member_use
                           ).primaryColor.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(30),
                           border: Border.all(
                             color: Theme.of(
                               context,
+                            // ignore: deprecated_member_use
                             ).primaryColor.withOpacity(0.1),
                           ),
                         ),
@@ -150,8 +148,6 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-
-  // 📦 Modern List Tile
   Widget _buildTile(IconData icon, String title) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 6),

@@ -10,8 +10,8 @@ class SearchField extends StatelessWidget {
     final search = context.watch<SearchProvider>();
 
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 250),
-      padding: const EdgeInsets.symmetric(horizontal: 14),
+      duration:  Duration(milliseconds: 250),
+      padding:  EdgeInsets.symmetric(horizontal: 14),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.9),
         borderRadius: BorderRadius.circular(18),
@@ -19,7 +19,7 @@ class SearchField extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(0.08),
             blurRadius: 20,
-            offset: const Offset(0, 10),
+            offset:  Offset(0, 10),
           ),
         ],
         // ignore: deprecated_member_use
@@ -27,9 +27,9 @@ class SearchField extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Icons.search, color: Colors.grey),
+           Icon(Icons.search, color: Colors.grey),
 
-          const SizedBox(width: 10),
+           SizedBox(width: 10),
 
           /// 🔍 Text Field
           Expanded(
@@ -38,8 +38,8 @@ class SearchField extends StatelessWidget {
               onChanged: (value) {
                 context.read<SearchProvider>().setQuery(value);
               },
-              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-              decoration: const InputDecoration(
+              style:  TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+              decoration:  InputDecoration(
                 hintText: "Search products...",
                 border: InputBorder.none,
                 isDense: true,
@@ -54,12 +54,12 @@ class SearchField extends StatelessWidget {
                 context.read<SearchProvider>().clear();
               },
               child: Container(
-                padding: const EdgeInsets.all(6),
+                padding:  EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(Icons.close, size: 18, color: Colors.black54),
+                child:  Icon(Icons.close, size: 18, color: Colors.black54),
               ),
             ),
         ],

@@ -14,10 +14,10 @@ class HomeContent extends StatelessWidget {
       padding:  EdgeInsets.all(16),
       child: Column(
         children: [
-           BannerSlide(),
-           SizedBox(height: 20),
-           SectionHeader(),
-           SizedBox(height: 10),
+          BannerSlide(),
+          SizedBox(height: 20),
+          SectionHeader(),
+          SizedBox(height: 10),
           ProductGride(products: products),
         ],
       ),

@@ -10,7 +10,7 @@ class NotificationButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(right: 12),
+        margin:  EdgeInsets.only(right: 12),
         width: 45,
         height: 45,
         decoration: _boxDecoration(BuildContext, context),

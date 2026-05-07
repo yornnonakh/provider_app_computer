@@ -28,8 +28,7 @@ class FavoriteButton extends StatelessWidget {
                 color: Theme.of(context).primaryColor,
               ),
             ),
-            /// 🔴 Badge
-            if (fav.count > 0) // ✅ use getter
+            if (fav.count > 0) 
               Positioned(
                 right: 6,
                 top: 6,
@@ -40,7 +39,7 @@ class FavoriteButton extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: Text(
-                    fav.count.toString(), // ✅ use getter
+                    fav.count.toString(), 
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 10,
@@ -60,6 +59,7 @@ class FavoriteButton extends StatelessWidget {
       color: Colors.white,
       borderRadius: BorderRadius.circular(14),
       boxShadow: [
+        // ignore: deprecated_member_use
         BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10),
       ],
     );

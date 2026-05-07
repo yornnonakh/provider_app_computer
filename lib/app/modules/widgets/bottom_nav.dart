@@ -10,27 +10,29 @@ class BottomNav extends StatefulWidget {
   @override
   State<BottomNav> createState() => _BottomNavState();
 }
+
 class _BottomNavState extends State<BottomNav> {
   int selectedIndex = 0;
 
   final List<Widget> screens = [
-    const HomeScreen(),
-    const CartScreen(),
-    const FavoriteScreen(),
-    const ProfileScreen(),
+    HomeScreen(),
+    CartScreen(),
+    FavoriteScreen(),
+    ProfileScreen(),
   ];
   @override
   void initState() {
     super.initState();
     ApiService.getProduct();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF7F8FA),
+      backgroundColor: Color(0xFFF7F8FA),
       body: screens[selectedIndex],
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16),
         child: Container(
           height: 70,
           decoration: BoxDecoration(
@@ -63,8 +65,8 @@ class _BottomNavState extends State<BottomNav> {
         });
       },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        duration: Duration(milliseconds: 250),
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
           color: isSelected
               // ignore: deprecated_member_use
@@ -80,7 +82,7 @@ class _BottomNavState extends State<BottomNav> {
             ),
 
             if (isSelected) ...[
-              const SizedBox(width: 6),
+              SizedBox(width: 6),
               Text(
                 _label(index),
                 style: TextStyle(

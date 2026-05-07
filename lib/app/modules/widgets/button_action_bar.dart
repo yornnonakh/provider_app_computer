@@ -30,18 +30,17 @@ class _DeleteActionBarState extends State<DeleteActionBar>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 300),
     );
 
     _slide = Tween<Offset>(
-      begin: const Offset(0, 1),
-      end: const Offset(0, 0),
+      begin: Offset(0, 1),
+      end: Offset(0, 0),
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     _controller.forward();
 
-    // ⏳ Auto dismiss after 4 seconds
-    _timer = Timer(const Duration(seconds: 4), () {
+    _timer = Timer(Duration(seconds: 4), () {
       widget.onDelete();
       _hide();
     });
@@ -59,7 +58,6 @@ class _DeleteActionBarState extends State<DeleteActionBar>
     _controller.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -68,9 +66,9 @@ class _DeleteActionBarState extends State<DeleteActionBar>
         position: _slide,
         child: Material(
           elevation: 10,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor.withOpacity(0.3),
               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -82,18 +80,16 @@ class _DeleteActionBarState extends State<DeleteActionBar>
                   Expanded(
                     child: Text(
                       widget.title,
-                      style: const TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
-
-                  // 🟢 UNDO
                   TextButton(
                     onPressed: () {
                       _timer?.cancel();
                       widget.onUndo();
                       _hide();
                     },
-                    child: const Text(
+                    child: Text(
                       "UNDO",
                       style: TextStyle(
                         color: Colors.green,
@@ -101,15 +97,13 @@ class _DeleteActionBarState extends State<DeleteActionBar>
                       ),
                     ),
                   ),
-
-                  // 🔴 DELETE
                   TextButton(
                     onPressed: () {
                       _timer?.cancel();
                       widget.onDelete();
                       _hide();
                     },
-                    child: const Text(
+                    child: Text(
                       "DELETE",
                       style: TextStyle(
                         color: Colors.red,

@@ -9,7 +9,7 @@ class ProductInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding:  EdgeInsets.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -17,9 +17,9 @@ class ProductInfo extends StatelessWidget {
             product.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style:  TextStyle(fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 6),
+           SizedBox(height: 6),
           Text(
             "\$${product.price}",
             style: TextStyle(
@@ -27,7 +27,7 @@ class ProductInfo extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 10),
+           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -38,7 +38,7 @@ class ProductInfo extends StatelessWidget {
                   color: Theme.of(context).primaryColor.withOpacity(0.2),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding:  EdgeInsets.all(10),
                   child: Text(
                     "In stock",
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold,
