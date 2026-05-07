@@ -18,13 +18,13 @@ class AddButton extends StatelessWidget {
         );
       },
       child: Container(
-        width: 34,
-        height: 34,
+        width: 35,
+        height: 35,
         decoration: BoxDecoration(
           color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: const Icon(Icons.add, color: Colors.white, size: 18),
+        child: const Icon(Icons.add, color: Colors.white, size: 20, fontWeight: FontWeight.bold,),
       ),
     );
   }
