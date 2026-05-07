@@ -11,12 +11,12 @@ class SearchResultView extends StatelessWidget {
       itemCount: 10, // later connect API/filter
       itemBuilder: (_, index) {
         return Card(
-          margin: const EdgeInsets.only(bottom: 10),
+          margin:  EdgeInsets.only(bottom: 10),
           child: ListTile(
-            leading: const Icon(Icons.shopping_bag),
+            leading:  Icon(Icons.shopping_bag),
             title: Text("$query result $index"),
-            subtitle: const Text("Product description"),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            subtitle:  Text("Product description"),
+            trailing:  Icon(Icons.arrow_forward_ios, size: 16),
           ),
         );
       },

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AddButton extends StatelessWidget {
   final dynamic product;
 
-  const AddButton({super.key,  required this.product});
+  const AddButton({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,7 @@ class AddButton extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (_) => ProductDetailScreen(pro: product),
-          ),
+          MaterialPageRoute(builder: (_) => ProductDetailScreen(pro: product)),
         );
       },
       child: Container(
@@ -24,7 +22,12 @@ class AddButton extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: const Icon(Icons.add, color: Colors.white, size: 20, fontWeight: FontWeight.bold,),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 20,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
