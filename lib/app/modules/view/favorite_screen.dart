@@ -1,3 +1,4 @@
+import 'package:computer_app_provider/app/modules/widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/favorite_porvider.dart';
@@ -16,7 +17,10 @@ class FavoriteScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: _iconBtn(context, Icons.arrow_back_ios, () {
-          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => BottomNav()),
+          );
         }),
         title: Text(
           'My Favorite',
@@ -84,7 +88,6 @@ class FavoriteScreen extends StatelessWidget {
     double size = 30,
   }) {
     final resolvedColor = color ?? Theme.of(context).primaryColor;
-
     return IconButton(
       icon: Icon(icon, color: resolvedColor, size: size),
       onPressed: onPressed,

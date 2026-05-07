@@ -100,6 +100,7 @@ class CartScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                           color: Theme.of(
                             context,
+                          // ignore: deprecated_member_use
                           ).primaryColor.withOpacity(0.1),
                         ),
                         child: Row(
