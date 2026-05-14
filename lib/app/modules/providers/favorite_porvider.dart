@@ -19,7 +19,7 @@ class FavoriteProvider extends ChangeNotifier {
       _favorites.add(product);
     }
 
-    notifyListeners(); // 🔥 THIS IS THE KEY
+    notifyListeners();
   }
 
   void favoriteProvider() {}
